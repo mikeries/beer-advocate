@@ -10,19 +10,23 @@ class BeerAdvocate::Scraper
     beers.each do |beer|
       counter+=1
       if counter > 2 && counter < 13
-        beer_hash = {
-          name: beer.children[1].children[0].children[0].children[0].text,
-          brewery: beer.children[1].children[1].children[0].text,
-          style: beer.children[1].children[1].children[2].text,
-          abv: beer.children[1].children[1].children[3].text,
-          rank: counter-2,
-          url: beer.children[1].children[0].attribute("href").value,
-          rating: beer.children[2].children[0].text
-        }
+        beer_hash = parse_element(beer);
         results << beer_hash
       end
     end
     results
+  end
+
+  def self.parse_element(element)
+    {
+      name: element.children[1].children[0].children[0].children[0].text,
+      brewery: element.children[1].children[1].children[0].text,
+      style: element.children[1].children[1].children[2].text,
+      abv: element.children[1].children[1].children[3].text,
+      rank: element.children[0].text,
+      url: element.children[1].children[0].attribute("href").value,
+      rating: element.children[2].children[0].text
+    }
   end
 
   def self.scrape_description(url)
