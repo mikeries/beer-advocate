@@ -9,7 +9,7 @@ class BeerAdvocate::Scraper
     results=[]
     beers.each do |beer|
       counter+=1
-      if counter > 2 && counter < 4
+      if counter > 2 && counter < 13
         beer_hash = {
           name: beer.children[1].children[0].children[0].children[0].text,
           brewery: beer.children[1].children[1].children[0].text,
@@ -19,8 +19,8 @@ class BeerAdvocate::Scraper
           url: beer.children[1].children[0].attribute("href").value
         }
         results << beer_hash
-        binding.pry
       end
     end
+    results
   end
 end
