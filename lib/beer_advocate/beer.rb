@@ -13,6 +13,10 @@ class BeerAdvocate::Beer
     @description = @description || BeerAdvocate::Scraper.scrape_description(self.url)
   end
 
+  def self.find(id)
+    self.all[id-1]
+  end
+
   def self.all
     if @@all.count==0
       BeerAdvocate::Scraper.scrape_beers.each {|hash| BeerAdvocate::Beer.new(hash)}

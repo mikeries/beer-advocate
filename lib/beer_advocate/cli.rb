@@ -31,7 +31,7 @@ class BeerAdvocate::CLI
   end
 
   def self.show_beer_details(selection)
-    beer = BeerAdvocate::Beer.all[selection.to_i-1]
+    beer = BeerAdvocate::Beer.find(selection.to_i)
     puts ""
     puts "Name: #{beer.name}"
     puts "Brewed by: #{beer.brewery}"
