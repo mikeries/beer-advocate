@@ -16,7 +16,8 @@ class BeerAdvocate::Scraper
           style: beer.children[1].children[1].children[2].text,
           abv: beer.children[1].children[1].children[3].text,
           rank: counter-2,
-          url: beer.children[1].children[0].attribute("href").value
+          url: beer.children[1].children[0].attribute("href").value,
+          rating: beer.children[2].children[0].text
         }
         results << beer_hash
       end
