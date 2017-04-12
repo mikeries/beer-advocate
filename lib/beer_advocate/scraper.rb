@@ -1,13 +1,13 @@
 require 'open-uri'
-require 'pry'
 
 class BeerAdvocate::Scraper
+  ROOT_URL = "https://www.beeradvocate.com"
+
   def self.scrape_beers
-    doc = Nokogiri::HTML(open('https://www.beeradvocate.com/lists/top/'))
+    doc = Nokogiri::HTML(open(ROOT_URL+'/lists/top/'))
     rows = doc.css('#ba-content table tr')
 
     results = (3..12).collect {|index| parse_element(rows[index-1])}
-
   end
 
   def self.parse_element(element)
@@ -23,7 +23,7 @@ class BeerAdvocate::Scraper
   end
 
   def self.scrape_description(url)
-    doc = Nokogiri::HTML(open('https://beeradvocate.com'+url))
+    doc = Nokogiri::HTML(open(ROOT_URL+url))
     text = doc.css('#ba-content > div:nth-child(4) > div:nth-child(2)').text
     description = text.split("\n")[19].strip
   end
