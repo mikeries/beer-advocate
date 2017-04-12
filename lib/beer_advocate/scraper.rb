@@ -26,7 +26,7 @@ class BeerAdvocate::Scraper
   end
 
   def self.scrape_description(url)
-    doc = Nokogiri::HTML(open(url))
+    doc = Nokogiri::HTML(open('https://beeradvocate.com'+url))
     text = doc.css('#ba-content > div:nth-child(4) > div:nth-child(2)').text
     description = text.split("\n")[19].strip
   end

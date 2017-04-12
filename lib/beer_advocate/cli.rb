@@ -42,7 +42,6 @@ class BeerAdvocate::CLI
   end
 
   def self.show_beer_details(beer)
-    beer.details
     puts "#{beer.name}"
     puts "#{beer.brewery}"
     puts "#{beer.style}, #{beer.abv}"
