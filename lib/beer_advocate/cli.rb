@@ -9,8 +9,7 @@ class BeerAdvocate::CLI
   def self.menu
     puts "BeerAdvocate.com's Top 10 Beers of All Time"
     puts "-------------------------------------------"
-    @beers = BeerAdvocate::Beer.all
-    @beers.each do |beer|
+    BeerAdvocate::Beer.all.each do |beer|
       puts "#{beer.rank}. #{beer.name}, #{beer.style}, #{beer.rating}"
     end
     puts "-------------------------------------------"
@@ -24,14 +23,15 @@ class BeerAdvocate::CLI
       if input == 'list'
         menu
       elsif input.to_i.between?(1,10)
-        show_beer_details(@beers[input.to_i-1])
+        show_beer_details(input)
       else
         puts "I don't recognize that command.  Please try again."
       end
     end
   end
 
-  def self.show_beer_details(beer)
+  def self.show_beer_details(selection)
+    beer = BeerAdvocate::Beer.all[selection.to_i-1]
     puts ""
     puts "Name: #{beer.name}"
     puts "Brewed by: #{beer.brewery}"
