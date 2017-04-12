@@ -4,17 +4,10 @@ require 'pry'
 class BeerAdvocate::Scraper
   def self.scrape_beers
     doc = Nokogiri::HTML(open('https://www.beeradvocate.com/lists/top/'))
-    beers = doc.css('#ba-content table tr')
-    counter = 0;
-    results=[]
-    beers.each do |beer|
-      counter+=1
-      if counter > 2 && counter < 13
-        beer_hash = parse_element(beer);
-        results << beer_hash
-      end
-    end
-    results
+    rows = doc.css('#ba-content table tr')
+
+    results = (3..12).collect {|index| parse_element(rows[index-1])}
+
   end
 
   def self.parse_element(element)
