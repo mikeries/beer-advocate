@@ -1,21 +1,18 @@
 class BeerAdvocate::CLI
 
   def self.start
-    welcome
     menu
     get_input
   end
 
-  def self.welcome
+  def self.menu
     puts "BeerAdvocate.com's Top 10 Beers of All Time"
     puts "-------------------------------------------"
-  end
-
-  def self.menu
     @beers = BeerAdvocate::Beer.all
     @beers.each do |beer|
       puts "#{beer.rank}. #{beer.name}, #{beer.style}, #{beer.rating}"
     end
+    puts "-------------------------------------------"
   end
 
   def self.get_input
