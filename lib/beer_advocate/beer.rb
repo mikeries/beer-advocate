@@ -15,11 +15,11 @@ class BeerAdvocate::Beer
 
   def details
     self.description = "This beer was conceived with the intent to push the concept of Doppelganger to 
-    the limit of flavor and intensity. Both the kettle hopping rates and dry hopping 
-    rates were increased while keeping the base beer the same. The result is intense, 
-    but also surprising in its balance and softness. The mouthfeel is viscous and 
-    coating with flavors of overripe mango, dank citrus, and tropical fruit 
-    balanced by a sharp but pleasant finish. A treat to warm you up as a true New 
+    the limit of flavor and intensity. Both the kettle hopping rates and dry hopping
+    rates were increased while keeping the base beer the same. The result is intense,
+    but also surprising in its balance and softness. The mouthfeel is viscous and
+    coating with flavors of overripe mango, dank citrus, and tropical fruit
+    balanced by a sharp but pleasant finish. A treat to warm you up as a true New
     England winter takes hold!"
   end
 
