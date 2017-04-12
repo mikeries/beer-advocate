@@ -9,7 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Michael Ries'"]
   spec.email         = ["'michael.ries@gmail.com'"]
 
-  spec.summary       = %q{Simple gem to scrape top beers from beeradvocate.com.}
+  spec.summary       = "Beer Advocate's Top Ten of All Time"
+  spec.description   = "Information on the to 10 beers in the world as ranked by beeradvocate.com."
   spec.homepage      = "https://github.com/mikeries/beer-advocate.git"
   spec.license       = "MIT"
 
@@ -34,4 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
 
   spec.add_dependency 'nokogiri'
+  spec.add_dependency "terminal-table", "~>1.7"
+  spec.add_dependency "colorize", "~>0.8"
 end
