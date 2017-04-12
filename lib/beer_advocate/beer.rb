@@ -15,10 +15,9 @@ class BeerAdvocate::Beer
   end
 
   def self.all
-    if @@all.count == 0
+    if @@all.count==0
       BeerAdvocate::Scraper.scrape_beers.each {|beer| self.create_beer_from_hash(beer)}
     end
-
     @@all
   end
 end

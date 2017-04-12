@@ -17,8 +17,10 @@ class BeerAdvocate::CLI
   end
 
   def self.get_input
-    puts "Please enter a number for more information, or 'exit' to quit."
-    while (input = gets.strip) != "exit" do
+    input=nil
+    until input=='exit'
+      puts "Please enter a number for details, 'list' to review the top ten, or 'exit' to quit."
+      input = gets.strip.downcase
       if input == 'list'
         menu
       elsif input.to_i.between?(1,10)
@@ -36,7 +38,6 @@ class BeerAdvocate::CLI
     puts "Style: #{beer.style} #{beer.abv}"
     puts "Description: #{beer.description}"
     puts ""
-    puts "Please enter 'list' to review the top-ten, or type 'exit'."
   end
 
   def self.goodbye
