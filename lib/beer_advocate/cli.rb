@@ -3,7 +3,6 @@ class BeerAdvocate::CLI
   def self.start
     menu
     get_input
-    goodbye
   end
 
   def self.menu
@@ -24,6 +23,8 @@ class BeerAdvocate::CLI
         menu
       elsif input.to_i.between?(1,10)
         show_beer_details(input)
+      elsif input == 'exit'
+        goodbye
       else
         puts "I don't recognize that command.  Please try again."
       end
