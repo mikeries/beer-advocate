@@ -22,8 +22,8 @@ class BeerAdvocate::CLI
     # puts "8. Infinity + ONE, American Double / Imperial IPA, 4.46"
     # puts "9. The Streets, American Double / Imperial IPA, 4.46"
     # puts "10. Bourbon Barrel Oro Negro, American Double / Imperial Stout, 4.46"
-    beers = BeerAdvocate::Beer.all
-    beers.each do |beer|
+    @beers = BeerAdvocate::Beer.all
+    @beers.each do |beer|
       puts "#{beer.rank}. #{beer.name}, #{beer.style}, #{beer.rating}"
     end
   end
@@ -34,24 +34,19 @@ class BeerAdvocate::CLI
       if input == 'list'
         menu
       elsif input.to_i.between?(1,10)
-        show_beer_details
+        show_beer_details(@beers[input.to_i-1])
       else
         puts "I don't recognize that command.  Please try again."
       end
     end
   end
 
-  def self.show_beer_details
-    puts "Doubleganger"
-    puts "Brewed by: Tree House Brewing Company"
-    puts "Style: American Double / Imperial IPA, 8.2% ABV"
-    puts "This beer was conceived with the intent to push the concept of Doppelganger to
-the limit of flavor and intensity. Both the kettle hopping rates and dry hopping
-rates were increased while keeping the base beer the same. The result is intense,
-but also surprising in its balance and softness. The mouthfeel is viscous and
-coating with flavors of overripe mango, dank citrus, and tropical fruit
-balanced by a sharp but pleasant finish. A treat to warm you up as a true New
-England winter takes hold!"
+  def self.show_beer_details(beer)
+    beer.details
+    puts "#{beer.name}"
+    puts "#{beer.brewery}"
+    puts "#{beer.style}, #{beer.abv}"
+    puts "#{beer.description}"
     puts ""
     puts "Please enter 'list' to review the top-ten, or type 'exit'."
   end
