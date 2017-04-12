@@ -3,6 +3,7 @@ class BeerAdvocate::CLI
   def self.start
     menu
     get_input
+    goodbye
   end
 
   def self.menu
@@ -36,5 +37,10 @@ class BeerAdvocate::CLI
     puts "Description: #{beer.description}"
     puts ""
     puts "Please enter 'list' to review the top-ten, or type 'exit'."
+  end
+
+  def self.goodbye
+    puts ""
+    puts "Thanks for stopping by!  Don't drink them all in one night!"
   end
 end
