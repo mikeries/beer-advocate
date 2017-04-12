@@ -4,10 +4,9 @@ class BeerAdvocate::Beer
 
   @@all=[]
 
-  def self.create_beer_from_hash(beer_hash)
-    beer = BeerAdvocate::Beer.new;
-    beer_hash.each {|key, value| beer.send(("#{key}="), value)}
-    @@all << beer
+  def initialize(beer_hash)
+    beer_hash.each {|key, value| self.send(("#{key}="), value)}
+    @@all << self
   end
 
   def description
@@ -16,7 +15,7 @@ class BeerAdvocate::Beer
 
   def self.all
     if @@all.count==0
-      BeerAdvocate::Scraper.scrape_beers.each {|beer| self.create_beer_from_hash(beer)}
+      BeerAdvocate::Scraper.scrape_beers.each {|hash| BeerAdvocate::Beer.new(hash)}
     end
     @@all
   end
