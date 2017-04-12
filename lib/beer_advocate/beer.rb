@@ -14,14 +14,18 @@ class BeerAdvocate::Beer
   end
 
   def self.all
-    beer = BeerAdvocate::Beer.new("Doubleganger")
-    beer.style = "American Double / Imperial IPA"
-    beer.rating = 4.61
-    beer.rank = 1
+    if @@all.count == 0
+      beer = BeerAdvocate::Beer.new("Doubleganger")
+      beer.style = "American Double / Imperial IPA"
+      beer.rating = 4.61
+      beer.rank = 1
 
-    beer = BeerAdvocate::Beer.new("Curiousity Twenty Seven")
-    beer.style = "American Double / Imperial IPA"
-    beer.rating = 4.53
-    beer.rank = 2
+      beer = BeerAdvocate::Beer.new("Curiousity Twenty Seven")
+      beer.style = "American Double / Imperial IPA"
+      beer.rating = 4.53
+      beer.rank = 2
+    end
+
+    @@all
   end
 end
