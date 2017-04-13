@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type
+
+    $ beer-advocate
+
+and follow the prompts.
 
 ## Development
 
