@@ -3,6 +3,9 @@ require 'open-uri'
 class BeerAdvocate::Scraper
   ROOT_URL = "https://www.beeradvocate.com"
 
+  #IDEA: Generalize scrape_beers to accept argument of the starting beer to
+  #      scrape, and modify cli to permit user to choose where to start, or
+  #      scroll down the entire list of 250 beers.
   def self.scrape_beers
     doc = Nokogiri::HTML(open(ROOT_URL+'/lists/top/'))
     rows = doc.css('#ba-content table tr')
